@@ -4,3 +4,19 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.field-set {
+  border: 2px solid #0ea5e9;
+  margin: 1rem;
+}
+
+.btn-style {
+  margin-top: 1rem;
+}
+
+.cart-total {
+  margin: 2rem;
+  border: 2px solid #0ea5e9;
+  padding: 1rem;
+  width: fit-content;
+}

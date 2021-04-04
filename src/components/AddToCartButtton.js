@@ -1,4 +1,4 @@
-import { useCart } from "../contexts/cart-context";
+import { useCart } from "../contexts";
 
 export const AddToCartButtton = ({ item }) => {
   const { dispatch } = useCart();
