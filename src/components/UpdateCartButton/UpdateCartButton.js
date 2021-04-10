@@ -1,20 +1,20 @@
-import { useCart } from "../contexts/cart-context";
+import { useCart } from "../../contexts";
 
 export const UpdateCartButton = ({ item }) => {
   const { dispatch } = useCart();
   return (
     <div>
-      <div class="button-container">
+      <div className="button-container">
         <button
           onClick={() => dispatch({ type: "DECREMENT", payload: item })}
-          class="btn btn-add"
+          className="btn btn-add"
         >
           -
         </button>
         {item.quantity}
         <button
           onClick={() => dispatch({ type: "INCREMENT", payload: item })}
-          class="btn btn-remove"
+          className="btn btn-remove"
         >
           +
         </button>

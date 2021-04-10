@@ -1,5 +1,5 @@
-import { useCart } from "../contexts/cart-context";
-import { UpdateCartButton } from "./UpdateCartButton";
+import { useCart } from "../../contexts";
+import { UpdateCartButton } from "../UpdateCartButton/UpdateCartButton";
 
 export const Cart = () => {
   const { cart } = useCart();

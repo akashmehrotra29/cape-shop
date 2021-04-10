@@ -1,4 +1,4 @@
-import { useWishlist } from "../contexts/wishlist-context";
+import { useWishlist } from "../../contexts";
 
 export const RemoveFromWishlistButton = ({ item }) => {
   const { dispatch } = useWishlist();

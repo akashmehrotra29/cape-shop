@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Navbar } from "./components/Navbar";
-import { Products } from "./components/Products";
-import { Cart } from "./components/Cart";
+import { Navbar } from "./components";
+import { Products } from "./components";
+import { Cart } from "./components";
 import "./styles.css";
-import { Wishlist } from "./components/Wishlist";
+import { Wishlist } from "./components";
 
 export default function App() {
   const [route, setRoute] = useState("products");

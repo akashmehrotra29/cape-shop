@@ -1,5 +1,5 @@
-import { useWishlist } from "../contexts/wishlist-context";
-import { RemoveFromWishlistButton } from "./RemoveFromWishlistButton";
+import { useWishlist } from "../../contexts";
+import { RemoveFromWishlistButton } from "../RemoveFromWishlistButton/RemoveFromWishlistButton";
 
 export const Wishlist = () => {
   const { wishlist, dispatch } = useWishlist();
@@ -8,24 +8,24 @@ export const Wishlist = () => {
       {wishlist.map((wishlistItem) => {
         return (
           <div>
-            <div class="vertical-card">
-              <div class="thumbnail">
+            <div className="vertical-card">
+              <div className="thumbnail">
                 <img
-                  class="img-responsive-vertical"
+                  className="img-responsive-vertical"
                   src={wishlistItem.image}
                   alt=""
                 />
                 <RemoveFromWishlistButton item={wishlistItem} />
               </div>
-              <div class="product-description">
+              <div className="product-description">
                 <h3> {wishlistItem.name} </h3>
                 <p> Price: Rs {wishlistItem.price} </p>
-                <div class="button-container">
+                <div className="button-container">
                   <div
                     onClick={() =>
                       dispatch({ type: "REMOVE", payload: wishlistItem })
                     }
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                   >
                     {" "}
                     remove
