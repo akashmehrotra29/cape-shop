@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { data } from "../../data";
 import { useFilter } from "../../contexts";
 import { ProductCard } from "../ProductCard/ProductCard";
+import { Search } from "../Search/Search";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
   const {
     sortBy,
     showFastDeliveryOnly,
@@ -12,7 +14,8 @@ export const Products = () => {
     rangeValue,
     dispatch,
     getSortedData,
-    getFilteredData
+    getFilteredData,
+    getSearchedData
   } = useFilter();
 
   useEffect(() => setProducts(data), [products]);
@@ -23,6 +26,7 @@ export const Products = () => {
     showFastDeliveryOnly,
     rangeValue
   });
+  const searchedProducts = getSearchedData(filteredProducts, search);
 
   return (
     <>
@@ -96,9 +100,11 @@ export const Products = () => {
         </div>
       </fieldset>
 
+      <Search setSearch={setSearch} />
+
       <div className="grid-row grid-wrapper">
-        {filteredProducts.map((productItem) => {
-          return <ProductCard productItem={productItem} />;
+        {searchedProducts.map((productItem) => {
+          return <ProductCard key={productItem.id} productItem={productItem} />;
         })}
       </div>
     </>
