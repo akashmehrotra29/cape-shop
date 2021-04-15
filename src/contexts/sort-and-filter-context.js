@@ -36,20 +36,6 @@ export const FilterProvider = ({ children }) => {
       .filter(({ price }) => price <= rangeValue);
   };
 
-  // const searchProduct = (productName, search) => {
-  //   return (
-  //     productName
-  //       .toLowerCase()
-  //       // .substr(0, search.length)
-  //       .includes(search.toLowerCase)
-  //   );
-  // };
-  // const getSearchedData = (products, search) => {
-  //   return search.length > 0
-  //     ? products.filter(({ name }) => searchProduct(name, search))
-  //     : products;
-  // };
-
   const getSearchedData = (products, search) => {
     if (search.length > 0) {
       return products.filter((product) => {

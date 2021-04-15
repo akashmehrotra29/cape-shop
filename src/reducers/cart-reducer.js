@@ -1,7 +1,9 @@
 export const cartReducer = (cart, { type, payload }) => {
   switch (type) {
     case "ADDTOCART":
-      const itemExists = cart.find((cartItem) => cartItem.id === payload.id);
+      const itemExists = cart.find(
+        (cartItem) => cartItem.productId === payload.productId
+      );
       if (!itemExists) return [...cart, { ...payload, quantity: 1 }];
     // return cart.concat({ payload, quantity: 1 }); //sallow copy with concat creates problem
 

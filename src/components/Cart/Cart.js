@@ -17,7 +17,7 @@ export const Cart = () => {
       <div className="horizontal-card-wrap">
         {cart.map((cartItem) => {
           return (
-            <div className="horizontal-card-center" key={cartItem.id}>
+            <div className="horizontal-card-center" key={cartItem.productId}>
               <div className="horizontal-card">
                 <div className="thumbnail">
                   <img

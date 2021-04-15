@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { data } from "../../data";
-import { useFilter } from "../../contexts";
+import { useFilter, useTheme } from "../../contexts";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { Search } from "../Search/Search";
+import { serverCall } from "../../serverCalls";
+import styles from "./Products.module.css";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const { setTheme } = useTheme();
+
   const {
     sortBy,
     showFastDeliveryOnly,
@@ -18,7 +21,17 @@ export const Products = () => {
     getSearchedData
   } = useFilter();
 
-  useEffect(() => setProducts(data), [products]);
+  useEffect(() => {
+    (async () => {
+      const response = await serverCall({
+        request: "GET",
+        url: "./api/products"
+      });
+
+      setProducts(response.data.products);
+      console.log({ response });
+    })();
+  }, []);
 
   const sortedProducts = getSortedData(products, sortBy);
   const filteredProducts = getFilteredData(sortedProducts, {
@@ -30,6 +43,17 @@ export const Products = () => {
 
   return (
     <>
+      <div className={`${styles.searchThemeContainer}`}>
+        <Search setSearch={setSearch} />
+        <span
+          className={`${styles.icon}`}
+          onClick={() =>
+            setTheme((theme) => (theme === "light" ? "dark" : "light"))
+          }
+        >
+          <i className="fas fa-adjust fa-2x"></i>
+        </span>
+      </div>
       <fieldset className="field-set ">
         <legend>Sort By</legend>
         <label>
@@ -100,11 +124,14 @@ export const Products = () => {
         </div>
       </fieldset>
 
-      <Search setSearch={setSearch} />
-
       <div className="grid-row grid-wrapper">
         {searchedProducts.map((productItem) => {
-          return <ProductCard key={productItem.id} productItem={productItem} />;
+          return (
+            <ProductCard
+              key={productItem.productId}
+              productItem={productItem}
+            />
+          );
         })}
       </div>
     </>

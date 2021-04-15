@@ -20,7 +20,7 @@ export const ProductCard = ({ productItem }) => {
             alt=""
           />
           {wishlist.find((wishlistItem) => {
-            if (wishlistItem.id === productItem.id) {
+            if (wishlistItem.productId === productItem.productId) {
               currWishlistItem = productItem;
               return wishlistItem;
             }
@@ -37,7 +37,7 @@ export const ProductCard = ({ productItem }) => {
           <p> Price: Rs {productItem.price} </p>
 
           {cart.find((cartItem) => {
-            if (cartItem.id === productItem.id) {
+            if (cartItem.productId === productItem.productId) {
               currCartItem = cartItem;
               return cartItem;
             }
