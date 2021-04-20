@@ -12,7 +12,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Products />} />
           <Route path="/products" element={<Products />} />
-          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>

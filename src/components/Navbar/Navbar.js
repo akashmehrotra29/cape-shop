@@ -1,5 +1,6 @@
 import { useTheme, useCart, useWishlist } from "../../contexts";
 import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const { itemsInCart } = useCart();
@@ -9,7 +10,9 @@ export const Navbar = () => {
   return (
     <div>
       <nav className={theme === "dark" ? "navbar dark" : "navbar"}>
-        <Link to="/products">Home</Link>
+        <Link className={styles.link} to="/products">
+          Home
+        </Link>
         <ul className="nav-links">
           <div className="icon-badge">
             <li className="nav-item">

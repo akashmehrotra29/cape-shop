@@ -60,12 +60,12 @@ export const UpdateCartButton = ({ item }) => {
   return (
     <div>
       <div className="button-container">
-        <button onClick={decQtyHandler} className="btn btn-add">
-          -
+        <button onClick={decQtyHandler} className="btn btn-round">
+          <i class="fa fa-minus" aria-hidden="true"></i>
         </button>
         {item.quantity}
-        <button onClick={incQtyHandler} className="btn btn-remove">
-          +
+        <button onClick={incQtyHandler} className="btn btn-round">
+          <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
     </div>
