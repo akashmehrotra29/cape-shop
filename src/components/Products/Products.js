@@ -5,11 +5,9 @@ import { Search } from "../Search/Search";
 import { serverCall } from "../../serverCalls";
 import styles from "./Products.module.css";
 
-export const Products = () => {
-  const [products, setProducts] = useState([]);
+export const Products = ({ products }) => {
   const [search, setSearch] = useState("");
   const { setTheme } = useTheme();
-
   const {
     sortBy,
     showFastDeliveryOnly,
@@ -20,18 +18,6 @@ export const Products = () => {
     getFilteredData,
     getSearchedData
   } = useFilter();
-
-  useEffect(() => {
-    (async () => {
-      const response = await serverCall({
-        request: "GET",
-        url: "./api/products"
-      });
-
-      setProducts(response.data.products);
-      console.log({ response });
-    })();
-  }, []);
 
   const sortedProducts = getSortedData(products, sortBy);
   const filteredProducts = getFilteredData(sortedProducts, {
@@ -126,11 +112,9 @@ export const Products = () => {
 
       <div className="grid-row grid-wrapper">
         {searchedProducts.map((productItem) => {
+          // console.log({ productItem });
           return (
-            <ProductCard
-              key={productItem.productId}
-              productItem={productItem}
-            />
+            <ProductCard key={productItem._id} productItem={productItem} />
           );
         })}
       </div>

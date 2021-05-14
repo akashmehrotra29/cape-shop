@@ -1,13 +1,31 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useCart } from "../../contexts";
 import { UpdateCartButton } from "../UpdateCartButton/UpdateCartButton";
 
 export const Cart = () => {
   const { cart } = useCart();
+  const [populatedCart, setPopulatedCart] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get(
+          `https://capeshop-api.akashmehrotra29.repl.co/cart/`
+        );
+        if (response && response.status === 200) {
+          setPopulatedCart(response.data.cartItem);
+        }
+      } catch (error) {
+        console.log("unable to get poopulated cart", error);
+      }
+    })();
+  }, [cart]);
 
   const getCartTotal = (items) => {
     let total = 0;
     items.forEach((cartItem) => {
-      total += cartItem.quantity * cartItem.price;
+      total += cartItem.quantity * cartItem.product.price;
     });
     return total;
   };
@@ -15,21 +33,22 @@ export const Cart = () => {
   return (
     <div>
       <div className="horizontal-card-wrap">
-        {cart.map((cartItem) => {
+        {populatedCart.map((cartItem) => {
+          // console.log("from cart", { cartItem });
           return (
-            <div className="horizontal-card-center" key={cartItem.productId}>
+            <div className="horizontal-card-center" key={cartItem.product._id}>
               <div className="horizontal-card">
                 <div className="thumbnail">
                   <img
                     className="img-responsive-horizontal"
-                    src={cartItem.image}
+                    src={cartItem.product.image}
                     alt=""
                   />
                 </div>
                 <div className="product-description">
-                  <h3> {cartItem.name} </h3>
-                  <p> Price: {cartItem.price}</p>
-                  <UpdateCartButton item={cartItem} />
+                  <h3> {cartItem.product.name} </h3>
+                  <p> Price: {cartItem.product.price}</p>
+                  <UpdateCartButton _id={cartItem.product._id} />
                 </div>
               </div>
             </div>
@@ -38,7 +57,7 @@ export const Cart = () => {
       </div>
       <div className="cart-total">
         {" "}
-        <strong>Cart Total:</strong> Rs {getCartTotal(cart)}
+        <strong>Cart Total:</strong> Rs {getCartTotal(populatedCart)}
       </div>
     </div>
   );

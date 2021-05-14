@@ -7,7 +7,9 @@ import { RemoveFromWishlistButton } from "../RemoveFromWishlistButton/RemoveFrom
 
 export const ProductCard = ({ productItem }) => {
   const { cart } = useCart();
+  // console.log({ cart });
   const { wishlist } = useWishlist();
+  // console.log("from product card", { wishlist });
   let currCartItem, currWishlistItem;
 
   return (
@@ -20,15 +22,17 @@ export const ProductCard = ({ productItem }) => {
             alt=""
           />
           {wishlist.find((wishlistItem) => {
-            if (wishlistItem.productId === productItem.productId) {
+            // console.log({ wishlistItem });
+            if (wishlistItem.product === productItem._id) {
               currWishlistItem = productItem;
+              // console.log({ currWishlistItem });
               return wishlistItem;
             }
             return null;
           }) ? (
-            <RemoveFromWishlistButton item={currWishlistItem} />
+            <RemoveFromWishlistButton _id={currWishlistItem._id} />
           ) : (
-            <AddToWishlistButton item={productItem} />
+            <AddToWishlistButton _id={productItem._id} />
           )}
           {/*  */}
         </div>
@@ -37,15 +41,16 @@ export const ProductCard = ({ productItem }) => {
           <p> Price: Rs {productItem.price} </p>
 
           {cart.find((cartItem) => {
-            if (cartItem.productId === productItem.productId) {
+            // console.log("from product card", { cartItem }, { productItem });
+            if (cartItem.product === productItem._id) {
               currCartItem = cartItem;
               return cartItem;
             }
             return null;
           }) ? (
-            <UpdateCartButton item={currCartItem} />
+            <UpdateCartButton _id={currCartItem.product} />
           ) : (
-            <AddToCartButtton item={productItem} />
+            <AddToCartButtton _id={productItem._id} />
           )}
         </div>
       </div>
