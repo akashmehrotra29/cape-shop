@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFilter, useTheme } from "../../contexts";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { Search } from "../Search/Search";
-import { serverCall } from "../../serverCalls";
 import styles from "./Products.module.css";
 
 export const Products = ({ products }) => {
@@ -112,7 +111,6 @@ export const Products = ({ products }) => {
 
       <div className="grid-row grid-wrapper">
         {searchedProducts.map((productItem) => {
-          // console.log({ productItem });
           return (
             <ProductCard key={productItem._id} productItem={productItem} />
           );

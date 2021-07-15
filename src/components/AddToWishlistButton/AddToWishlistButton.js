@@ -1,29 +1,8 @@
 import axios from "axios";
 import { useWishlist } from "../../contexts";
-import { serverCall } from "../../serverCalls";
 
 export const AddToWishlistButton = ({ _id }) => {
   const { dispatch } = useWishlist();
-
-  // const addToWishlistHandler = async () => {
-  //   // console.log({ item });
-  //   const { id, ...itemWithoutId } = item; //remove
-  //   try {
-  //     await serverCall({
-  //       request: "POST",
-  //       url: "/api/wishlistitems",
-  //       dataBody: { wishlistitem: { ...itemWithoutId } }
-  //     });
-
-  //     dispatch({ type: "ADD", payload: item });
-
-  //     console.log("toast: added to wishlist");
-  //   } catch {
-  //     console.log("toast: failed to add to wishlist");
-  //   } finally {
-  //     console.log("remove toast");
-  //   }
-  // };
 
   const addToWishlistHandler = async () => {
     try {
@@ -31,7 +10,6 @@ export const AddToWishlistButton = ({ _id }) => {
         `https://capeshop-api.akashmehrotra29.repl.co/wishlist/`,
         { _id }
       );
-      // console.log("add to wishlist", { response });
       if (response.status === 201) {
         dispatch({
           type: "ADD_TO_WISHLIST",

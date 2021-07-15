@@ -34,7 +34,6 @@ export const Cart = () => {
     <div>
       <div className="horizontal-card-wrap">
         {populatedCart.map((cartItem) => {
-          // console.log("from cart", { cartItem });
           return (
             <div className="horizontal-card-center" key={cartItem.product._id}>
               <div className="horizontal-card">

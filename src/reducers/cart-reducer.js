@@ -16,14 +16,11 @@ export const cartReducer = (cart, { type, payload }) => {
       );
 
     case "DECREMENT":
-      // if (payload.quantity > 1) {
       return cart.map((cartItem) =>
         cartItem.product === payload.productId
           ? { ...cartItem, quantity: payload.quantity }
           : cartItem
       );
-    // }
-    // return cart.filter((cartItem) => cartItem.product !== payload.productId);
 
     case "DELETE":
       return cart.filter((cartItem) => cartItem.product !== payload.productId);

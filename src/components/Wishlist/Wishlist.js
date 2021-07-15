@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useWishlist } from "../../contexts";
-import { WishlistContext } from "../../contexts/wishlist-context";
 import { RemoveFromWishlistButton } from "../RemoveFromWishlistButton/RemoveFromWishlistButton";
 
 export const Wishlist = () => {
@@ -29,7 +28,6 @@ export const Wishlist = () => {
       const response = await axios.delete(
         `https://capeshop-api.akashmehrotra29.repl.co/wishlist/${_id}`
       );
-      // console.log("remove from wishlist", { response });
       if (response.status === 200) {
         dispatch({
           type: "REMOVE_FROM_WISHLIST",

@@ -17,7 +17,6 @@ export default function App() {
         const response = await axios.get(
           "https://capeshop-api.akashmehrotra29.repl.co/load-data"
         );
-        // console.log({ response });
         if (response.status === 200) {
           setProducts(response.data.products);
           initializeWishlist(response.data.wishlistItems);

@@ -7,7 +7,6 @@ export const WishlistProvider = ({ children }) => {
   const [wishlist, dispatch] = useReducer(wishlistReducer, []);
 
   const initializeWishlist = (wishlistItems) => {
-    // console.log({wishlistItems});
     dispatch({ type: "INITIALIZE", payload: { wishlistItems } });
   };
 

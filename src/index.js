@@ -7,7 +7,6 @@ import { CartProvider } from "./contexts/cart-context";
 import { FilterProvider } from "./contexts/sort-and-filter-context";
 import { WishlistProvider } from "./contexts/wishlist-context";
 import { ThemeProvider } from "./contexts/theme-context";
-// setupMockServer();
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

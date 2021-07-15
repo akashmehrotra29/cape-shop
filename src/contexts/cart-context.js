@@ -18,8 +18,6 @@ export const CartProvider = ({ children }) => {
     return total;
   };
 
-  // console.log("cart length", cart.length);
-
   return (
     <CartContext.Provider
       value={{ cart, dispatch, initializeCart, itemsInCart }}

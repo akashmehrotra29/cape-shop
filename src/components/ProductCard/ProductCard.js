@@ -7,9 +7,8 @@ import { RemoveFromWishlistButton } from "../RemoveFromWishlistButton/RemoveFrom
 
 export const ProductCard = ({ productItem }) => {
   const { cart } = useCart();
-  // console.log({ cart });
   const { wishlist } = useWishlist();
-  // console.log("from product card", { wishlist });
+
   let currCartItem, currWishlistItem;
 
   return (
@@ -41,7 +40,6 @@ export const ProductCard = ({ productItem }) => {
           <p> Price: Rs {productItem.price} </p>
 
           {cart.find((cartItem) => {
-            // console.log("from product card", { cartItem }, { productItem });
             if (cartItem.product === productItem._id) {
               currCartItem = cartItem;
               return cartItem;
