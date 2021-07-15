@@ -11,7 +11,10 @@ export const Navbar = () => {
     <div>
       <nav className={theme === "dark" ? "navbar dark" : "navbar"}>
         <Link className={styles.link} to="/products">
-          Home
+          <img
+            src="https://res.cloudinary.com/akash29/image/upload/c_scale,h_60,w_60/v1625941960/cape-watch-app-logo_ueq003.png"
+            alt="logo"
+          />
         </Link>
         <ul className="nav-links">
           <div className="icon-badge">
