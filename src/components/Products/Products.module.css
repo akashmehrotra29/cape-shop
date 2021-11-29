@@ -1,0 +1,12 @@
+.searchThemeContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 2rem 0rem 0rem;
+}
+
+.icon {
+  position: relative;
+  bottom: 9px;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+.textArea {
+  border: 2px solid #0ea5e9;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 1rem 2rem 1rem;
+}
+
+.searchIcon {
+  border-color: #0ea5e9;
+  left: 30px;
+}
